@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class CaesarChiperTest {
+public class CaesarCiperTest {
 
     @Test
     @DisplayName("when valid input is given then works properly")

@@ -1,11 +1,11 @@
 package attack;
 
 import cipher.CaesarCipher;
-import cipher.attack.CaesarChiperAttack;
+import cipher.attack.CaesarCipherAttack;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CaesarChiperAttackTest {
+public class CaesarCipherAttackTest {
 
     @Test
     public void testAttackMethod1(){
@@ -14,7 +14,7 @@ public class CaesarChiperAttackTest {
         String cipheredText= CaesarCipher.encrypt(plainText,1);
 
         //when
-        String result = CaesarChiperAttack.breakChiper(cipheredText);
+        String result = CaesarCipherAttack.breakChiper(cipheredText);
 
         //when
         Assertions.assertEquals(result,plainText);
@@ -27,7 +27,7 @@ public class CaesarChiperAttackTest {
         String cipheredText= CaesarCipher.encrypt(plainText,1);
 
         //when
-        String result = CaesarChiperAttack.breakChiper(cipheredText);
+        String result = CaesarCipherAttack.breakChiper(cipheredText);
 
         //when
         Assertions.assertEquals(result,plainText);
@@ -40,7 +40,7 @@ public class CaesarChiperAttackTest {
         String cipheredText= CaesarCipher.encrypt(plainText,1);
 
         //when
-        String result = CaesarChiperAttack.breakChiper(cipheredText);
+        String result = CaesarCipherAttack.breakChiper(cipheredText);
 
         //when
         Assertions.assertEquals(result,plainText);

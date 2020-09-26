@@ -11,7 +11,7 @@ import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class CaesarChiperAttack {
+public class CaesarCipherAttack {
     public static final int letterCount = 26;
     private static final double[] englishLettersProbabilities =
             {0.073, 0.009, 0.030, 0.044, 0.130, 0.028, 0.016, 0.035, 0.074,
