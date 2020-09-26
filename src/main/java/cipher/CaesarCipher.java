@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class CaesarCipher {
-    public static final int letterCount=26;
+    public static final int letterCount = 26;
 
     public static String encrypt(String message, int offset){
         if(offset < 0){
@@ -20,15 +20,15 @@ public class CaesarCipher {
 
     private static int applyRule(int letterCode,int offset){
         if(Character.isLowerCase(letterCode)){
-            int originalAlphabetPosition = letterCode - Character.getNumericValue('a');
+            int originalAlphabetPosition = letterCode - 'a';
             int newAlphabetPosition = (originalAlphabetPosition + offset) % letterCount;
-            int newCharacter = Character.getNumericValue('a') + newAlphabetPosition;
+            int newCharacter = 'a' + newAlphabetPosition;
             return newCharacter;
         }
         else if (Character.isUpperCase(letterCode)){
-            int originalAlphabetPosition = letterCode - Character.getNumericValue('A');
+            int originalAlphabetPosition = letterCode - 'A';
             int newAlphabetPosition = (originalAlphabetPosition + offset) % letterCount;
-            int newCharacter = Character.getNumericValue('A') + newAlphabetPosition;
+            int newCharacter = 'A' + newAlphabetPosition;
             return newCharacter;
         }
         else {
