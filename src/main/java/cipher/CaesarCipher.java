@@ -1,7 +1,6 @@
 package cipher;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+
 
 public class CaesarCipher {
     public static final int letterCount = 26;
