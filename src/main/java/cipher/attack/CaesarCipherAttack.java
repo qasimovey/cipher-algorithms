@@ -4,12 +4,9 @@ import cipher.CaesarCipher;
 import org.apache.commons.math3.stat.inference.ChiSquareTest;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class CaesarCipherAttack {
     public static final int letterCount = 26;
