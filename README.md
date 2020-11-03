@@ -21,7 +21,7 @@ $ git clone https://gitlab.com/egasimov0/cipher-algorithms.git {project_name}
 and run Application
 ``` 
 $ ./mvnw clean
-$ mvn exec:java -Dexec.mainClass="cipher.Application"
+$ ./mvnw exec:java -Dexec.mainClass="cipher.Application"
 
 ```
 You can also look at tests written for each cipher algorithm in order to better understand
