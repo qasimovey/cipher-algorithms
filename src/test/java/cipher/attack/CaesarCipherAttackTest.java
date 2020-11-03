@@ -1,4 +1,4 @@
-package attack;
+package cipher.attack;
 
 import cipher.CaesarCipher;
 import cipher.attack.CaesarCipherAttack;

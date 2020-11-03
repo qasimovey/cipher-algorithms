@@ -7,6 +7,8 @@ import java.io.Serializable;
  * where each character in the plain text is written horizontally with specified alphabet width.
  * The cipher is written vertically, which creates an entirely different cipher text.
  *
+ * What about decryption phase?
+ * read cells of matrix from left to right , (or horizontally)
  */
 public class TranspositionCipher implements Serializable {
     private final int rowCount;

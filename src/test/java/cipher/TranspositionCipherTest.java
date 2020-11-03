@@ -1,3 +1,5 @@
+package cipher;
+
 import cipher.TranspositionCipher;
 import cipher.VigenereCipher;
 import org.junit.jupiter.api.*;

@@ -1,7 +1,5 @@
 package cipher;
 
-
-
 public class CaesarCipher {
     public static final int letterCount = 26;
 
