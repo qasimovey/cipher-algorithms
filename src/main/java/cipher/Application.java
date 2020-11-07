@@ -1,9 +1,17 @@
 package cipher;
 
 import cipher.attack.CaesarCipherAttack;
+import com.sun.source.tree.BinaryTree;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.math.BigInteger;
+import java.util.Base64;
+import java.util.stream.Stream;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception{
+        /*
         String plainText = null;
         String cipher = null ;
         String result = null;
@@ -43,6 +51,17 @@ public class Application {
         System.out.println("Plain Text: " + plainText);
         System.out.println("Cipher Text: " + cipher);
         System.out.println("After Decryption : " + result);
+*/
+
+        String plainText = "ENCRYPT";
+        String plainKey = "OK";
+
+        DESCipher cipher = new DESCipher();
+        var cipherText = cipher.encrypt(plainText,plainText);
+
+        System.out.println("Cipher text is " + cipherText);
 
     }
+
+
 }
