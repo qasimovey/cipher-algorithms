@@ -3,15 +3,19 @@ package cipher;
 import cipher.attack.CaesarCipherAttack;
 import cipher.attack.VigenereCipherAttack;
 
+import java.util.stream.IntStream;
+
 public class Application {
     public static void main(String[] args) {
 
+
+
         String cipher = "BCRRBCQORHKEPSLSLCWRWXXDESPEZMPYQWCEBCBOSFHCIZHSQWVHCBRWRVLNEGDRCKRRQS";
         var cipherTool = new VigenereCipherAttack();
-        var resultKey = cipherTool.breakCipherKey4(cipher);
-
-        System.out.println("key is: "+ resultKey);
-        System.out.println("Original text is: "+ VigenereCipher.decyrpt(cipher,resultKey));
+        var resultKey = cipherTool.breakCipherKey(cipher,4);
+//
+//        System.out.println("key is: "+ resultKey);
+//        System.out.println("Original text is: "+ VigenereCipher.decyrpt(cipher,resultKey));
 
         /*
         String plainText = null;

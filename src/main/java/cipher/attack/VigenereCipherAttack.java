@@ -1,6 +1,7 @@
 package cipher.attack;
 
 import cipher.VigenereCipher;
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.math3.stat.inference.ChiSquareTest;
 
 import java.util.*;
@@ -16,26 +17,29 @@ public class VigenereCipherAttack {
 
     private double[] expectedLettersFrequencies;
 
-
+    public static final char[] charSet = {'A','B','C','D','E','F','G','H','I','J',
+                'K','L','M','N','O','P','Q','R','S','T','U',
+                'V','W','X','Y','Z'};
     //cipherText.toUpperCase
-    public String breakCipherKey4(String cipherText){
+    public String breakCipherKey(String cipherText,int keyLen){
 
         //produce key
-        List<String> keyList = produceKey4();
+        List<String> keyList = generateKeyList(keyLen);
 
         expectedLettersFrequencies = Arrays.stream(englishLettersProbabilities)
                 .map(probability -> probability * cipherText.length())
                 .toArray();
 
-        final Map<String,Double> keyAndOffSet=new HashMap<>();
+        final Map<String,Double> keyAndOffSet = new HashMap<>();
 
-        keyList.parallelStream()
+        //ignore parallelStream for now
+        keyList.stream()
                 .forEach((key) -> {
                     double chiSquare = calcChiSquare(cipherText.toUpperCase(), key);
                     keyAndOffSet.put(key,chiSquare);
                 });
 
-        System.out.println(keyAndOffSet);
+        //System.out.println(keyAndOffSet);
 
         Map.Entry<String, Double> result = keyAndOffSet.entrySet()
                         .stream()
@@ -48,36 +52,13 @@ public class VigenereCipherAttack {
     }
 
     double calcChiSquare(String cipherText, String key) {
-        String decyrptText = VigenereCipher.decyrpt(cipherText.toUpperCase(), key.toUpperCase());
+        String decyrptText = VigenereCipher.decyrpt(cipherText.toUpperCase(), key);
         long[] lettersFrequencies = observedLettersFrequencies(decyrptText);
         double chiSquare = new ChiSquareTest().chiSquare(expectedLettersFrequencies, lettersFrequencies);
         //System.out.println("key is: " + key + " text is:" + decyrptText);
 
         return chiSquare;
     }
-
-    List<String> produceKey4() {
-        List<String> keyList = new LinkedList<>();
-
-        for (char i = 'A'; i < 'Z'; i++) {
-            for (char j = 'A'; j <'Z'; j++) {
-                for (char k = 'A'; k < 'Z'; k++) {
-                    for (char l = 'A'; l < 'Z'; l++) {
-                        StringBuilder strBuilder = new StringBuilder();
-                        strBuilder.append(i);
-                        strBuilder.append(j);
-                        strBuilder.append(k);
-                        strBuilder.append(l);
-                        //add key
-                        keyList.add(strBuilder.toString());
-                    }
-                }
-            }
-        }
-        return keyList;
-    }
-
-
 
     /*
     Map<Character, Integer> getFrequencies(String text){
@@ -105,5 +86,38 @@ public class VigenereCipherAttack {
                 .filter(character -> character == letter)
                 .count();
     }
+
+
+    public  List<String> generateKeyList(int length) {
+        List<String> keyList = new LinkedList<>();
+
+//        StringBuilder collect = IntStream.range(65, 65+26)
+//                .mapToObj((item) -> String.valueOf((char) item))
+//                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
+//
+//        char[] charSet = collect.toString().toCharArray();
+        produceKey(charSet,length, "",keyList);
+
+        //keyList.forEach(System.out::println);
+        return keyList;
+    }
+
+
+    //recursive function -- call itself until key formed
+    public void produceKey(char[] charSet, int k,String prefix ,List<String> keyList) {
+        if(k == 0){ // means, key already formed
+            //add key into list
+            keyList.add(prefix);
+            return;
+        }
+
+        for (int i = 0; i < letterCount; i++) {
+            //new symbol added
+            String newPrefix = prefix + charSet[i];
+
+            produceKey(charSet,k-1,newPrefix,keyList);
+        }
+    }
+
 
 }
