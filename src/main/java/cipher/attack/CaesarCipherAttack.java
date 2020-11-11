@@ -47,7 +47,7 @@ public class CaesarCipherAttack {
         return offset;
     }
     private static long[] observedLettersFrequencies(String message) {
-        return IntStream.rangeClosed('a', 'z')
+        return IntStream.rangeClosed('A', 'Z')
                 .mapToLong(letter -> countLetter((char) letter, message))
                 .toArray();
     }

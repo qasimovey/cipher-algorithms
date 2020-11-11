@@ -1,9 +1,19 @@
 package cipher;
 
 import cipher.attack.CaesarCipherAttack;
+import cipher.attack.VigenereCipherAttack;
 
 public class Application {
     public static void main(String[] args) {
+
+        String cipher = "BCRRBCQORHKEPSLSLCWRWXXDESPEZMPYQWCEBCBOSFHCIZHSQWVHCBRWRVLNEGDRCKRRQS";
+        var cipherTool = new VigenereCipherAttack();
+        var resultKey = cipherTool.breakCipherKey4(cipher);
+
+        System.out.println("key is: "+ resultKey);
+        System.out.println("Original text is: "+ VigenereCipher.decyrpt(cipher,resultKey));
+
+        /*
         String plainText = null;
         String cipher = null ;
         String result = null;
@@ -43,6 +53,6 @@ public class Application {
         System.out.println("Plain Text: " + plainText);
         System.out.println("Cipher Text: " + cipher);
         System.out.println("After Decryption : " + result);
-
+*/
     }
 }
