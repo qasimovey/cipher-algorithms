@@ -1,9 +1,30 @@
 package cipher;
 
 import cipher.attack.CaesarCipherAttack;
+import cipher.util.NgramFinder;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.stream.IntStream;
 
 public class Application {
     public static void main(String[] args) {
+
+
+        HashMap<String, Integer> happy_victory_day = NgramFinder.countNgram("happy victory day".replaceAll(" ",""), 2);
+        System.out.println(happy_victory_day);
+
+
+//        System.out.println(CaesarCipherAttack.breakChiper("SKKZ NKXK"));
+//
+//        System.out.println(CaesarCipher.encrypt("MEET HERE",6));
+//        System.out.println(VigenereCipher.encyrpt("FOLLO WTHEY ELLOW BRICK ROAD", "OZ"));
+
+        //map.computeIfPresent("key",(key,val)->map.put(val+1))
+        //IntStream.rangeClosed(0,text.length())
+
+
+        /*
         String plainText = null;
         String cipher = null ;
         String result = null;
@@ -43,6 +64,7 @@ public class Application {
         System.out.println("Plain Text: " + plainText);
         System.out.println("Cipher Text: " + cipher);
         System.out.println("After Decryption : " + result);
+        */
 
     }
 }

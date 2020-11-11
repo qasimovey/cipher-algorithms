@@ -26,6 +26,8 @@ public class CaesarCipherAttack {
         //apply each offset, then pick up the results
         for (int offset = 0; offset < chiSquares.length; offset++) {
             String decipheredMessage = CaesarCipher.decrypt(message, offset);
+            System.out.printf("%s, %d ",decipheredMessage,offset);
+            System.out.println();
             offsetAndPlainText.put(offset,decipheredMessage);
             long[] lettersFrequencies = observedLettersFrequencies(decipheredMessage);
             double chiSquare = new ChiSquareTest().chiSquare(expectedLettersFrequencies, lettersFrequencies);
